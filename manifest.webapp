@@ -1,0 +1,14 @@
+{
+  "name": "Hirolvaso App",
+  "description": "Firefox OS kotelezo program - SZTE",
+  "launch_path": "/index.html",
+  "icons": {
+    "512": "/img/icon-512.png",
+    "128": "/img/icon-128.png"
+  },
+  "developer": {
+    "name": "Motzwickler Mark (SZTE)",
+    "url": "http://asd.asd"
+  },
+  "default_locale": "hu"
+}

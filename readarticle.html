@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/st.css">
+    </head>
+    <body>
+        <div class="container">
+
+            <ul class="nav nav-pills nav-stacked">
+                <li class="dropdown active">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="writearticle.html">Write Article</a></li>
+                        <li><a href="readarticle.html">Read Articles</a></li>
+                        <li><a href="about.html">About</a></li> 
+                        <li><a href="vibration.html">Vibrate</a></li> 
+                    </ul>
+                </li>
+            </ul>
+            <div class="jumbotron">
+                <h3>Please enter the name of the requested news channel!</h3>
+                <p><input type="text" placeholder="" id="owner"></p>
+                <p><button id="get" class="recommend">Get the news!</button></p>
+            </div>
+
+            <!--<div class="jumbotron">!-->
+                <ul id="msglist"></ul>
+            <!--</div>!-->
+        </div>
+<script>
+            function reqListener() {
+                console.log(this.responseText);
+            }
+            var appid="jkqxl2_0";
+            
+            function viewData(){
+                var ul=document.getElementById("msglist");
+                var li=document.createElement("LI");
+                li.innerHTML=this.responseText;
+                ul.appendChild(li);
+            }
+            
+            function showData(){
+                document.getElementById("msglist").innerHTML="";
+                eval("var ids="+this.responseText+";");
+                for(var x=0;x<ids.length-1;x++){
+                    var oReq = new XMLHttpRequest();
+                    oReq.onload = viewData;
+                    oReq.open("get", "http://k-firefoxos.appspot.com/objects?appid="+appid+"&id="+ids[x], true);
+                    oReq.send();
+                }
+                
+            }
+            
+            function getData(){
+                var owner=document.getElementById("owner").value;
+                var oReq = new XMLHttpRequest();
+                oReq.onload = showData;
+                oReq.open("get", "http://k-firefoxos.appspot.com/objects?appid="+appid+"&owner="+owner, true);
+                oReq.send();
+                
+            }
+            
+            document.querySelector("#get").addEventListener("click", getData);
+        </script>
+        <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>

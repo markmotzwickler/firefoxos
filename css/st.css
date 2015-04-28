@@ -1,0 +1,30 @@
+ul
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li
+{
+    background-color: #ccc;
+    text-align: center;
+    color: navy;
+    margin: 1em 0;
+}
+
+@media screen and (orientation: portrait)
+{
+    #fomenu {
+        width: 100%;
+    }
+}
+    
+@media screen and (orientation: landscape)
+{
+    #fomenu {
+        position: fixed;
+        width: 20%;
+        height: 100%;
+    }
+}
